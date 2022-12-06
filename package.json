@@ -1,0 +1,24 @@
+{
+  "name": "digital-real-estate-learning",
+  "version": "1.0.0",
+  "description": "Analyse digital real estate metadata to compute a price prediction model from a particular metaverse.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niccolosottile/digital-real-estate-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niccolosottile/digital-real-estate-learning/issues"
+  },
+  "homepage": "https://github.com/niccolosottile/digital-real-estate-learning#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moralis": "^2.8.2"
+  }
+}
