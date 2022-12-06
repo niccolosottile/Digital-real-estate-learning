@@ -12,29 +12,22 @@ const MORALIS_API_KEY = "lgNtzu3ylU5YmKnnYr6BjVTU930P4xDZQlCukbZTnfZaS7lyTmYNiq3
 const address = '0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d'; // Decentraland contract address
 const chain = EvmChain.ETHEREUM;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-const startServer = async () => {
-    await Moralis.start({
-        apiKey: MORALIS_API_KEY,
-    })
-
-    app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`)
-    })
-}
-
-startServer()
-
 async function getTradesData() {
     const response = await Moralis.EvmApi.nft.getNFTTrades({
         address,
         chain,
+        limit: 10,
     });
 
-    return {response}
+    // Format the output to return name, amount and metadata
+    const trades = response.result.map((trade) => ({
+        transaction_hash: trade.result.transactionHash,
+        token_ids: trade.result.tokenIds,
+        price: trade.result.price.toString(),
+        block_timestamp: trade.result.blockTimestamp,
+    }))
+
+    return {trades}
 }
 
 app.get("/trades", async (req, res) => {
@@ -49,4 +42,16 @@ app.get("/trades", async (req, res) => {
       res.status(500)
       res.json({ error: error.message })
     }
-  })
+})
+
+const startServer = async () => {
+    await Moralis.start({
+        apiKey: MORALIS_API_KEY,
+    })
+
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+    })
+}
+
+startServer()
