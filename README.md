@@ -1,5 +1,7 @@
 # digital-real-estate-learning
 
-Analyse digital real estate metadata to compute a price prediction model from a particular metaverse. 
+Application that analyses digital real estate metadata to compute a price prediction model from a particular metaverse. 
 
-The data is taken using the OpenSea API
+Uses Node.js, Express.js, Moralis.js.
+
+The data is taken from the OpenSea marketplace using the Moralis API
