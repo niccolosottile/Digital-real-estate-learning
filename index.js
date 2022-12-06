@@ -30,6 +30,8 @@ async function getTradesData() {
     return {trades}
 }
 
+app.set('json spaces', 2); // Setting express options json to 2 spaces
+
 app.get("/trades", async (req, res) => {
     try {
       // Get and return the trades data
