@@ -1,14 +1,14 @@
 // Setting up Express server
-const express = require('express')
+const express = require('express');
 // Import Moralis
-const Moralis = require('moralis').default
+const Moralis = require('moralis').default;
 // Import the EvmChain dataType
-const { EvmChain } = require("@moralisweb3/common-evm-utils")
+const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 9000;
 
-const MORALIS_API_KEY = "lgNtzu3ylU5YmKnnYr6BjVTU930P4xDZQlCukbZTnfZaS7lyTmYNiq3O1NkY8skF"
+const MORALIS_API_KEY = "lgNtzu3ylU5YmKnnYr6BjVTU930P4xDZQlCukbZTnfZaS7lyTmYNiq3O1NkY8skF";
 const address = '0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d'; // Decentraland contract address
 const chain = EvmChain.ETHEREUM;
 
@@ -25,9 +25,9 @@ async function getTradesData() {
         token_ids: trade.result.tokenIds,
         price: trade.result.price.toString(),
         block_timestamp: trade.result.blockTimestamp,
-    }))
+    }));
 
-    return {trades}
+    return {trades};
 }
 
 app.set('json spaces', 2); // Setting express options json to 2 spaces
@@ -35,14 +35,14 @@ app.set('json spaces', 2); // Setting express options json to 2 spaces
 app.get("/trades", async (req, res) => {
     try {
       // Get and return the trades data
-      const data = await getTradesData()
-      res.status(200)
+      const data = await getTradesData();
+      res.status(200);
       res.json(data)
     } catch (error) {
       // Handle errors
-      console.error(error)
-      res.status(500)
-      res.json({ error: error.message })
+      console.error(error);
+      res.status(500);
+      res.json({ error: error.message });
     }
 })
 
@@ -52,8 +52,8 @@ const startServer = async () => {
     })
 
     app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`)
+        console.log(`Example app listening on port ${port}`);
     })
-}
+};
 
-startServer()
+startServer();
