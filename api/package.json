@@ -1,6 +1,7 @@
 {
   "name": "api",
   "version": "0.1.0",
+  "private": "true",
   "scripts": {
     "start": "node ./bin/www",
     "build": "echo \"Haven't configured built yet\" && exit 1",
