@@ -24,16 +24,19 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h3>
+          Fetching Decentraland Opensea API transaction history:
+        </h3>
         <p>
           {this.state.apiResponse}
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/niccolosottile/digital-real-estate-learning#readme"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          GitHub Repository
         </a>
       </header>
     </div>

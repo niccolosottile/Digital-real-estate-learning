@@ -8,6 +8,9 @@ var app = require('../app');
 var debug = require('debug')('api:server');
 var http = require('http');
 
+// Import Moralis
+const Moralis = require('moralis').default;
+
 /**
  * Get port from environment and store in Express.
  */
@@ -20,6 +23,23 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ * Start Moralis server using API key
+ */
+const MORALIS_API_KEY = "lgNtzu3ylU5YmKnnYr6BjVTU930P4xDZQlCukbZTnfZaS7lyTmYNiq3O1NkY8skF";
+
+const startMoralis = async () => {
+  try {
+    await Moralis.start({
+      apiKey: MORALIS_API_KEY,
+    })
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+startMoralis();
 
 /**
  * Listen on provided port, on all network interfaces.

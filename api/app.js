@@ -15,6 +15,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Setting Express options json to 2 spaces
+app.set('json spaces', 2);
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(cookieParser());
