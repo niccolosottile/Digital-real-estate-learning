@@ -19,7 +19,7 @@ async function getTradesData() {
         limit: 10,
     });
 
-    // Format the output to return name, amount and metadata
+    // Format the output to return metadata
     const trades = response.result.map((trade) => ({
         transaction_hash: trade.result.transactionHash,
         token_ids: trade.result.tokenIds,
