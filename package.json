@@ -19,6 +19,6 @@
   "scripts": {
     "start-API": "npm run start --prefix API",
     "start-client": "npm run start --prefix client",
-    "dev": "concurrently --kill-others-on-fail \"npm run start-API\" \"npm run start-client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run start-API\" \"npm run start-client\""
   }
 }
