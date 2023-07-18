@@ -1,3 +1,4 @@
+const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
@@ -22,6 +23,11 @@ function saveToLocal(newData) {
       console.log('Data saved to dataset.json');
     });
   });
+}
+
+async function fetchTransactions() {
+  const response = await axios.get("http://localhost:9000/testAPI");
+  return response.data;
 }
 
 fetchTransactions()
