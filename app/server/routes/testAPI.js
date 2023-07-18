@@ -23,7 +23,7 @@ async function getTradesData() {
         block_timestamp: trade.result.blockTimestamp,
     }));
 
-    return {trades};
+    return trades;
 }
 
 router.get('/', async(req, res, next) => {
