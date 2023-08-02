@@ -9,21 +9,29 @@ const address = '0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d'; // Decentraland co
 const chain = EvmChain.ETHEREUM;
 
 async function getTradesData() {
-    const response = await Moralis.EvmApi.nft.getNFTTrades({
-        address,
-        chain,
-        limit: 10,
-    });
+    let cursor = null;
+    let all_trades = [];
 
-    // Format the output to return metadata
-    const trades = response.result.map((trade) => ({
-        transaction_hash: trade.result.transactionHash,
-        token_ids: trade.result.tokenIds,
-        price: trade.result.price.toString(),
-        block_timestamp: trade.result.blockTimestamp,
-    }));
+    do {
+        const response = await Moralis.EvmApi.nft.getNFTTrades({
+            address,
+            chain,
+            limit: 100,
+            cursor: cursor
+        });
 
-    return trades;
+        const trades = response.result.map((trade) => ({
+            transaction_hash: trade.transactionHash,
+            token_ids: trade.tokenIds,
+            price: trade.price.toString(),
+            block_timestamp: trade.blockTimestamp,
+        }));
+
+        all_trades = all_trades.concat(trades);
+        cursor = response.pagination.cursor;
+    } while (cursor != "" && cursor != null);
+
+    return all_trades;
 }
 
 router.get('/', async(req, res, next) => {
